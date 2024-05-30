@@ -50,7 +50,7 @@ const ProductsList = ({ data, loading }) => {
         </Flex>
       </Col>
       <Col xs={0} sm={2} className="pe-5 d-none d-sm-flex">
-        <Categories />
+        <Categories data={data} onFilter={setFilteredData} />
       </Col>
       <Col xs={12} sm={10} className="flex-column">
         <Row className="ps-0 ps-sm-5 ">
