@@ -8,12 +8,21 @@ import Pagination from "./pagination/pagination";
 const ProductsList = ({ data, loading }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
+  const [sortedType, setSortedType] = useState("name");
+  const [filteredData, setFilteredData] = useState(data);
 
   const [paginateLoading, setPaginateLoading] = useState(true);
 
+  const sortedData = [...filteredData].sort((a, b) => {
+    if (sortedType === "name") {
+      return a.name.localeCompare(b.name);
+    }
+    return a.price - b.price;
+  });
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = sortedData.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -27,12 +36,13 @@ const ProductsList = ({ data, loading }) => {
         <Flex className="justify-content-between mb-4">
           <Flex>
             <Title className="pe-1">Photography /</Title>
-            <Title className="ps-1 font-grey font-regular">Premium Photos</Title>
+            <Title className="ps-1 font-grey font-regular">
+              Premium Photos
+            </Title>
           </Flex>
           <Flex className="align-items-center">
             <p className="me-2">Sort By</p>
-            {/* <select onChange={(e) => setSortedType(e.target.value)}> */}
-            <select>
+            <select onChange={(e) => setSortedType(e.target.value)}>
               <option value="name">Name</option>
               <option value="price">Price</option>
             </select>
