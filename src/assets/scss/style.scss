@@ -1,6 +1,13 @@
-body, ul, h1, h2, h3, h4, h5, p {
+body,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
   margin: 0;
-  font-family: 'Archivo-Regular';
+  font-family: "Archivo-Regular";
 }
 
 body {
@@ -35,12 +42,12 @@ body {
   &__btn {
     cursor: pointer;
   }
-  
+
   &:hover {
     .product-item__btn {
       bottom: 0;
       opacity: 1;
-      transition: .15s;
+      transition: 0.15s;
     }
   }
 
@@ -62,4 +69,17 @@ body {
 
 .lh-1 {
   line-height: 1;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link:hover {
+  color: #656565;
+  text-decoration: none;
 }
